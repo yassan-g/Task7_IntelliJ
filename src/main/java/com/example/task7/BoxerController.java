@@ -17,9 +17,10 @@ public class BoxerController {
     }
 
     @PostMapping("/boxers")
-    public ResponseEntity<Map<String, String>> create(@Validated @RequestBody BoxerCreateForm boxerCreateForm) {
+    public ResponseEntity<Map<String, String>> create(@Validated @RequestBody BoxerCreateForm boxerCreateForm,
+                                                      UriComponentsBuilder uriBuilder) {
         /*Locationの設定*/
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8080")
+        URI uri = uriBuilder
                 .path("/boxers/id")
                 .build()
                 .toUri();
